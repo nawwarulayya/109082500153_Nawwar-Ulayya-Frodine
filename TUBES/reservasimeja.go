@@ -186,6 +186,17 @@ func mejaTerfavorit(data []Reservasi) {
 	fmt.Printf("Meja nomor %d paling sering dipesan sebanyak %d kali\n", mejaFavorit, max)
 }
 
+func TampilkanSemuaPelanggan(daftarPelanggan []Pelanggan) {
+    fmt.Println("\n--- DAFTAR PELANGGAN ---")
+    if len(daftarPelanggan) == 0 {
+        fmt.Println("Belum ada data pelanggan.")
+    } else {
+        for _, pelanggan := range daftarPelanggan {
+            fmt.Printf("ID/NIK: %d | Nama: %s | No HP: %s\n", pelanggan.ID, pelanggan.Nama, pelanggan.NoHP)
+        }
+    }
+}
+
 func main() {
 	listMeja := []Meja{
 		{Nomor: 1, Kapasitas: 2, Status: "Tersedia", JumlahDipesan: 0},
@@ -217,6 +228,7 @@ func main() {
 		fmt.Println("7. Tampilkan Semua Meja")
 		fmt.Println("8. Tampilkan Statistik (Poin E)")
 		fmt.Println("9. Keluar Program")
+		fmt.Println("10. Keluar Program")
 		fmt.Println("==================================")
 		fmt.Print("Pilih menu (1-9): ")
 		
@@ -293,7 +305,7 @@ func main() {
 			}
 
 		case 6:
-			fmt.Println("Metode pengurutan:")
+    		fmt.Println("Metode pengurutan:")
     		fmt.Println("A. Selection Sort (Berdasarkan Nomor Meja)") 
     		fmt.Println("B. Insertion Sort")
     		fmt.Print("Pilih (A/B): ")
@@ -309,7 +321,7 @@ func main() {
     		} else {
     		    fmt.Println("Pilihan tidak valid.")
     		}
-			
+
 		case 7:
 			fmt.Println("\n--- DAFTAR MEJA ---")
 			if len(listMeja) == 0 {
@@ -325,11 +337,14 @@ func main() {
 			mejaTerfavorit(listReservasi)
 
 		case 9:
-			fmt.Println("Terima kasih telah menggunakan program ReservaResto!")
-			return
+            TampilkanSemuaPelanggan(listPelanggan)
 
-		default:
-			fmt.Println("Pilihan tidak valid, silakan coba lagi.")
-		}
-	}
+        case 10:
+            fmt.Println("Terima kasih telah menggunakan program ReservaResto!")
+            return
+
+        default:
+            fmt.Println("Pilihan tidak valid, silakan coba lagi.")
+        }
+    }
 }
