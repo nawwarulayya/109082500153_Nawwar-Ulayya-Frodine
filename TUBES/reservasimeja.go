@@ -262,13 +262,31 @@ func main() {
 			BuatReservasi(listMeja, &listReservasi, idRes, idPel, noMeja, waktu)
 
 		case 5:
+			fmt.Println("Metode pencarian:")
+			fmt.Println("A. Sequential Search (Bisa untuk data tidak terurut)")
+			fmt.Println("B. Binary Search (Pastikan data terurut berdasarkan Nomor Meja)")
+			fmt.Print("Pilih (A/B): ")
+			var metodeCari string
+			fmt.Scan(&metodeCari)
+
 			var target int
 			fmt.Print("Masukkan Nomor Meja yang dicari: ")
 			fmt.Scan(&target)
-			idx := sequentialSearchNomor(listMeja, target)
-			
+
+			var idx int
+			if metodeCari == "A" || metodeCari == "a" {
+				idx = sequentialSearchNomor(listMeja, target)
+				fmt.Println(">> Menggunakan algoritma Sequential Search...")
+			} else if metodeCari == "B" || metodeCari == "b" {
+				idx = binarySearchNomor(listMeja, target)
+				fmt.Println(">> Menggunakan algoritma Binary Search...")
+			} else {
+				fmt.Println("Pilihan tidak valid.")
+				continue // Melanjutkan ke iterasi for berikutnya agar tidak error
+			}
+
 			if idx != -1 {
-				fmt.Printf("Meja %d ditemukan! Kapasitas: %d, Status: %s\n", 
+				fmt.Printf("Meja %d ditemukan! Kapasitas: %d, Status: %s\n",
 					listMeja[idx].Nomor, listMeja[idx].Kapasitas, listMeja[idx].Status)
 			} else {
 				fmt.Println("Meja tidak ditemukan.")
