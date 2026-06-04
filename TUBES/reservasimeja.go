@@ -227,7 +227,7 @@ func main() {
 		fmt.Println("6. Urutkan Meja Berdasarkan Kapasitas")
 		fmt.Println("7. Tampilkan Semua Meja")
 		fmt.Println("8. Tampilkan Statistik (Poin E)")
-		fmt.Println("9. Keluar Program")
+		fmt.Println("9. Tampilkan Data Pelanggan")
 		fmt.Println("10. Keluar Program")
 		fmt.Println("==================================")
 		fmt.Print("Pilih menu (1-9): ")
