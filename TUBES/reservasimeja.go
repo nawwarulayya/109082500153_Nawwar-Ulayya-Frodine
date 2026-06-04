@@ -115,17 +115,17 @@ func binarySearchNomor(data []Meja, target int) int {
 	return -1
 }
 
-func selectionSortKapasitas(data []Meja) {
-	n := len(data)
-	for i := 0; i < n-1; i++ {
-		minIdx := i
-		for j := i + 1; j < n; j++ {
-			if data[j].Kapasitas < data[minIdx].Kapasitas {
-				minIdx = j
-			}
-		}
-		data[i], data[minIdx] = data[minIdx], data[i]
-	}
+func selectionSortNomor(data []Meja) {
+    n := len(data)
+    for i := 0; i < n-1; i++ {
+        minIdx := i
+        for j := i + 1; j < n; j++ {
+            if data[j].Nomor < data[minIdx].Nomor {
+                minIdx = j
+            }
+        }
+        data[i], data[minIdx] = data[minIdx], data[i]
+    }
 }
 
 func insertionSortKapasitas(data []Meja) {
@@ -282,7 +282,7 @@ func main() {
 				fmt.Println(">> Menggunakan algoritma Binary Search...")
 			} else {
 				fmt.Println("Pilihan tidak valid.")
-				continue // Melanjutkan ke iterasi for berikutnya agar tidak error
+				continue 
 			}
 
 			if idx != -1 {
@@ -294,22 +294,22 @@ func main() {
 
 		case 6:
 			fmt.Println("Metode pengurutan:")
-			fmt.Println("A. Selection Sort")
-			fmt.Println("B. Insertion Sort")
-			fmt.Print("Pilih (A/B): ")
-			var metode string
-			fmt.Scan(&metode)
+    		fmt.Println("A. Selection Sort (Berdasarkan Nomor Meja)") 
+    		fmt.Println("B. Insertion Sort")
+    		fmt.Print("Pilih (A/B): ")
+    		var metode string
+    		fmt.Scan(&metode)
 
-			if metode == "A" || metode == "a" {
-				selectionSortKapasitas(listMeja)
-				fmt.Println("Berhasil diurutkan dengan Selection Sort.")
-			} else if metode == "B" || metode == "b" {
-				insertionSortKapasitas(listMeja)
-				fmt.Println("Berhasil diurutkan dengan Insertion Sort.")
-			} else {
-				fmt.Println("Pilihan tidak valid.")
-			}
-
+    		if metode == "A" || metode == "a" {
+    		    selectionSortNomor(listMeja) 
+    		    fmt.Println("Berhasil diurutkan berdasarkan Nomor Meja dengan Selection Sort.")
+    		} else if metode == "B" || metode == "b" {
+    		    insertionSortKapasitas(listMeja)
+    		    fmt.Println("Berhasil diurutkan dengan Insertion Sort.")
+    		} else {
+    		    fmt.Println("Pilihan tidak valid.")
+    		}
+			
 		case 7:
 			fmt.Println("\n--- DAFTAR MEJA ---")
 			if len(listMeja) == 0 {
